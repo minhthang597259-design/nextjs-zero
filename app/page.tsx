@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <main style={{ padding: 40 }}>
-      <h1>Day 5 - URL Shortener</h1>
+      <h1>URL Shortener</h1>
 
       <input
         type="text"
