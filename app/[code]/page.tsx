@@ -9,27 +9,15 @@ export default async function RedirectPage({
   const { code } = await params
 
   if (!code) {
-    return (
-      <div style={{ padding: 40 }}>
-        <h1>Invalid short URL</h1>
-      </div>
-    )
+    return <h1>Invalid short URL</h1>
   }
 
-  const record = await prisma.url.findUnique({
-    where: {
-      shortCode: code,
+  const record = await prisma.url.update({
+    where: { shortCode: code },
+    data: {
+      clicks: { increment: 1 }, // 👈 QUAN TRỌNG
     },
   })
-
-  if (!record) {
-    return (
-      <div style={{ padding: 40 }}>
-        <h1>404 - Link not found</h1>
-        <p>The short URL does not exist.</p>
-      </div>
-    )
-  }
 
   redirect(record.longUrl)
 }
