@@ -44,7 +44,7 @@ export default function Home() {
         Shorten
       </button>
 
-      <p>Result: {result}</p>
+      <p>Result: https://nextjs-zero-7hqo.vercel.app/{result}</p>
     </main>
   )
 }
